@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
+import moment from 'moment';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink
+} from 'react-router-dom';
+import axios from 'axios';
 
-function App() {
+
+import PortfolioContainer from "./components/portfolio/portfolio-container";
+import NavigationContainer from "./components/navigation/navigation-container";
+import Home from "./components/pages/home";
+import About from "./components/pages/about";
+
+
+export default class App extends Component {
+render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Router>
+        <div>
+          <NavigationContainer />
+
+          <Routes>
+            <Route exact path="/" element={<Home/>}/>
+            <Route path="/about-me" element={<About/>}/>
+          </Routes>
+        </div>
+      </Router>
+
+     <h1>Javier Valdez Portfolio </h1>
+     <div>
+      {moment().format('MMMM Do YYYY, h:mm:ss a')}
+     </div>
+     <PortfolioContainer/>
     </div>
   );
 }
-
-export default App;
+}

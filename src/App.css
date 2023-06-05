@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  color: #cea135;
+  text-decoration: dotted;
+  pointer-events:visibleFill;
+  transition: .5s;
+
+}
+
+.App:hover {
+  color: blue;
+  text-decoration: dotted;
+
 }
 
 .App-logo {
