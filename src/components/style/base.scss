@@ -1,0 +1,11 @@
+body {
+    margin: 0px;
+    font-family: 'Oxygen', sans-serif;
+    text-align: center;
+    color: #cea135;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+}

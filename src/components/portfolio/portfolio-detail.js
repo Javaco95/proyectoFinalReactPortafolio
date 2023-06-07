@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
-
-
-export default function portfoliodetail(props) {
+import React from "react";
+import { useParams } from "react-router-dom";
+const PortfolioDetail = () => {
+  const { slug } = useParams();
   return (
     <div>
-        <h2>Portfolio Detail for {props.match.params.slug}</h2>
+      <h2>Portfolio Detail for {slug}</h2>
     </div>
-  )
-}
+  );
+};
+export default PortfolioDetail;

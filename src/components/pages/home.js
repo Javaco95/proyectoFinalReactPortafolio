@@ -8,5 +8,5 @@ export default function home() {
       <h2>Homepage</h2>
       <PortfolioContainer/>
       </div>
-  )
+  );
 }
