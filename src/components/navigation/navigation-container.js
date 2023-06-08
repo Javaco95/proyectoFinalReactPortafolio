@@ -34,13 +34,6 @@ export default class NavigationComponent extends Component {
           <div className="nav-link-wrapper">
           <NavLink to="/blog" activeClassName="nav-link-active">Blog</NavLink> 
           </div>
-        
-          
-          
-          
-        
-          
-          {false ? <button>Add Blog</button> : null}
         </div>
 
         <div className="right-side">
