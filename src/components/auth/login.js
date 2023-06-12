@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { withCredentials } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor(props) {
@@ -32,11 +31,11 @@ export default class Login extends Component {
             email: this.state.email,
             password: this.state.password,
           },
-        },
-        { withCredentials: true }
+        }
       )
       .then((response) => {
         if (response.data.status === "created") {
+          console.log("You can come in...");
           this.props.handleSuccessfulAuth();
         } else {
           this.setState({
@@ -55,7 +54,6 @@ export default class Login extends Component {
 
     event.preventDefault();
   }
-
 
   render() {
     return (
