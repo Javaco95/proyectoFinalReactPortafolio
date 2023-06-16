@@ -1,32 +1,75 @@
+// import React, { Component } from 'react';
+// import { useHistory } from "react-router-use-history";
+// import Login from '../auth/login';
+// import loginImg from "../../images/auth/login.jpg";
+
+// export default function Auth(props) {
+//     const history = useHistory();
+  
+//     const handleSuccessfulAuth = () => {
+//       props.handleSuccessfulLogin();
+//       history.push("/");
+//     };
+  
+//     const handleUnsuccessfulAuth = () => {
+//       props.handleUnsuccessfulLogin();
+//     };
+  
+
+//     return (
+//         <div className="auth-page-wrapper">
+//           <div
+//             className="left-column"
+//             style={{
+//               backgroundImage: `url(${loginImg})`
+//             }}
+//           />
+    
+//           <div className="right-column">
+//             <Login
+//               handleSuccessfulAuth={handleSuccessfulAuth}
+//               handleUnsuccessfulAuth={handleUnsuccessfulAuth}
+//             />
+//           </div>
+//         </div>
+//       );
+//     }
+
 import React, { Component } from 'react';
+import { useHistory } from "react-router-use-history";
 import Login from '../auth/login';
-import loginImg from "../../images/auth/login.jpg";
+import loginImg from '../../images/auth/login.jpg';
 
-export default class Auth extends Component {
-  handleSuccessfulAuth = () => {
-    this.props.handleSuccessfulLogin();
-  }
+export default function Auth(props) {
+ 
 
-  handleUnsuccessfulAuth = () => {
-    this.props.handleUnsuccessfulLogin();
-  }
 
-  render() {
-    return (
-      <div className="auth-page-wrapper">
-        <div
-          className="left-column"
-          style={{
-            backgroundImage: `url(${loginImg})`
-          }}
+  const history = useHistory();
+
+  const handleSuccessfulAuth = (authToken) => {
+    props.handleSuccessfulLogin(authToken);
+    history.push("/");
+  };
+
+  const handleUnsuccessfulAuth = () => {
+    props.handleUnsuccessfulLogin();
+  };
+
+  return (
+    <div className="auth-page-wrapper">
+      <div
+        className="left-column"
+        style={{
+          backgroundImage: `url(${loginImg})`,
+        }}
+      />
+
+      <div className="right-column">
+        <Login
+          handleSuccessfulAuth={handleSuccessfulAuth}
+          handleUnsuccessfulAuth={handleUnsuccessfulAuth}
         />
-        <div className="right-column">
-          <Login
-            handleSuccessfulAuth={this.handleSuccessfulAuth}
-            handleUnsuccessfulAuth={this.handleUnsuccessfulAuth}
-          />
-        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
