@@ -143,6 +143,10 @@ import "./components/style/main.scss";
 import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+
 import NavigationContainer from "./components/navigation/navigation-container";
 import Home from "./components/pages/home";
 import About from "./components/pages/about";
@@ -152,6 +156,8 @@ import PortfolioManager from "./components/pages/portfolio-manager";
 import PortfolioDetail from "./components/portfolio/portfolio-detail";
 import Auth from "./components/pages/auth";
 import NoMatch from "./components/pages/no-match";
+
+library.add(faTrash, faSignOutAlt);
 
 export default class App extends Component {
   constructor(props) {
