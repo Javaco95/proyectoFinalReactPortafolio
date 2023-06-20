@@ -56,7 +56,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import ReactHtmlParser from "react-html-parser";
+import BlogFeaturedImage from "../blog/blog-featured-image";
 
 
 const BlogDetail = () => {
@@ -91,11 +92,9 @@ const BlogDetail = () => {
         <div className="content-container">
         <h1>{title}</h1>
 
-        <div className="featured-image-wrapper">
-        <img src={featured_image_url} alt={title} />
-        </div>
+        <BlogFeaturedImage img={featured_image_url} />
 
-        <div className="content">{content}</div>
+        <div className="content">{ReactHtmlParser(content)}</div>
         </div>
         </div>
   );

@@ -276,10 +276,7 @@ import "./components/style/main.scss";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faSignOutAlt, faEdit, faBan, faSpinner, faFileCirclePlus} from "@fortawesome/free-solid-svg-icons";
-
 import NavigationContainer from "./components/navigation/navigation-container";
 import Home from "./components/pages/home";
 import About from "./components/pages/about";
@@ -290,10 +287,12 @@ import PortfolioManager from "./components/pages/portfolio-manager";
 import PortfolioDetail from "./components/portfolio/portfolio-detail";
 import Auth from "./components/pages/auth";
 import NoMatch from "./components/pages/no-match";
+import Icons from "./helpers/icons";
 
-library.add(faTrash, faSignOutAlt, faEdit, faBan, faSpinner, faFileCirclePlus);
+
 
 const App = () => {
+  Icons();
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
   useEffect(() => {
