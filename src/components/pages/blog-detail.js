@@ -56,7 +56,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import "./blog.scss";
+
+
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -82,6 +83,8 @@ const BlogDetail = () => {
   }
 
   const { title, content, featured_image_url, blog_status } = blogItem;
+  
+  
 
   return (
     <div className="blog-container">
