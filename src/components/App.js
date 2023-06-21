@@ -1,19 +1,19 @@
-import "./components/style/main.scss";
+import "../components/style/main.scss"
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NavigationContainer from "./components/navigation/navigation-container";
-import Home from "./components/pages/home";
-import About from "./components/pages/about";
-import Contact from "./components/pages/contact";
-import Blog from "./components/pages/blog";
-import BlogDetail from "./components/pages/blog-detail";
-import PortfolioManager from "./components/pages/portfolio-manager";
-import PortfolioDetail from "./components/portfolio/portfolio-detail";
-import Auth from "./components/pages/auth";
-import NoMatch from "./components/pages/no-match";
-import Icons from "./helpers/icons";
+import NavigationContainer from "./navigation/navigation-container";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Contact from "./pages/contact";
+import Blog from "./pages/blog";
+import BlogDetail from "./pages/blog-detail";
+import PortfolioManager from "./pages/portfolio-manager";
+import PortfolioDetail from "./portfolio/portfolio-detail";
+import Auth from "./pages/auth";
+import NoMatch from "./pages/no-match";
+import Icons from "../helpers/icons";
 
 const App = () => {
   Icons();
