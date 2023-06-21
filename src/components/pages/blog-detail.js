@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import ReactHtmlParser from "react-html-parser";
+// import ReactHtmlParser from "react-html-parser";
 import BlogFeaturedImage from "../blog/blog-featured-image";
 import BlogForm from "../blog/blog-form";
 
@@ -66,7 +66,7 @@ const BlogDetail = (props) => {
 
           <BlogFeaturedImage img={featured_image_url} />
 
-          <div className="content">{ReactHtmlParser(content)}</div>
+          <div className="content">{(content)}</div>
         </div>
       );
     }
