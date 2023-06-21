@@ -24,8 +24,8 @@ const NavigationComponent = (props) => {
       .then((response) => {
         if (response.status === 200) {
           props.handleSuccessfulLogout();
-          localStorage.removeItem('authToken'); // Remove the authentication token from local storage
-          history.push('/'); // Redirect to the home page
+          localStorage.removeItem('authToken'); 
+          history.push('/'); 
         }
         return response.data;
       })
@@ -64,6 +64,12 @@ const NavigationComponent = (props) => {
         {props.loggedInStatus === 'LOGGED_IN' ? (
           dynamicLink('/portfolio-manager', 'Portfolio Manager')
         ) : null}
+
+          <div className="nav-link-wrapper">
+          <NavLink to="/auth" activeClassName="nav-link-active">
+            <FontAwesomeIcon icon="key" />
+          </NavLink>
+        </div>
       </div>
 
       <div className="right-side">
