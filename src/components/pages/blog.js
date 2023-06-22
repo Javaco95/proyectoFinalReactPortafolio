@@ -31,7 +31,7 @@ class Blog extends Component {
   handleDeleteClick(blog) {
     axios
       .delete(
-        `https://api.devcamp.space/portfolio/portfolio_blogs/${blog.id}`,
+        `https://api.devcamp.space/portfolio/portfolio_blogs/${blog}`,
         { withCredentials: true }
       )
       .then(response => {

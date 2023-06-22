@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { useHistory } from "react-router-use-history";
 import Login from '../auth/login';
 import loginImg from '../../images/auth/login.jpg';

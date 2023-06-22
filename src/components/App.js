@@ -1,6 +1,6 @@
 import "../components/style/main.scss"
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavigationContainer from "./navigation/navigation-container";
@@ -41,21 +41,20 @@ const App = () => {
     setLoggedInStatus("NOT_LOGGED_IN");
   };
 
-  const checkLoginStatus = () => {
-    return axios
-      .get("https://api.devcamp.space/logged_in", { withCredentials: true })
-      .then((response) => {
-        const loggedIn = response.data.logged_in;
-        if (loggedIn) {
-          setLoggedInStatus("LOGGED_IN");
-        } else {
-          setLoggedInStatus("NOT_LOGGED_IN");
-          localStorage.removeItem('authToken');
-        }
-      })
-      .catch((error) => {
-        console.log("Error", error);
-      });
+  const checkLoginStatus = async () => {
+    try {
+      const response = await axios
+        .get("https://api.devcamp.space/logged_in", { withCredentials: true });
+      const loggedIn = response.data.logged_in;
+      if (loggedIn) {
+        setLoggedInStatus("LOGGED_IN");
+      } else {
+        setLoggedInStatus("NOT_LOGGED_IN");
+        localStorage.removeItem('authToken');
+      }
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
 
   const authorizedPages = () => {

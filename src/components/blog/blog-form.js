@@ -30,10 +30,9 @@ export default class BlogForm extends Component {
   }
 
   deleteImage(imageType) {
-
-    axios.delete(
-        `https://api.devcamp.space/portfolio/delete-portfolio-blog-image/${this.props.blog
-          .id}?image_type=${imageType}`,
+    axios
+      .delete(
+        `https://api.devcamp.space/portfolio/delete-portfolio-blog-image/${this.props.blog.id}?image_type=${imageType}`,
         { withCredentials: true }
       )
       .then(response => {
@@ -42,8 +41,7 @@ export default class BlogForm extends Component {
       .catch(error => {
         console.log("deleteImage error", error);
       });
-    }
-  
+  }
 
   componentDidMount() {
     if (this.props.editMode) {
@@ -57,30 +55,29 @@ export default class BlogForm extends Component {
       });
     }
   }
-  
 
   componentConfig() {
     return {
       iconFiletypes: [".jpg", ".png"],
       showFiletypeIcon: true,
       postUrl: "https://httpbin.org/post"
-    }
+    };
   }
 
-  djsConfig(){
+  djsConfig() {
     return {
       addRemoveLinks: true,
       maxFiles: 1
-    }
+    };
   }
 
   handleFeaturedImageDrop() {
-    return{
-      addedfile: file => this.setState({ featured_image: file})
-    }
+    return {
+      addedfile: file => this.setState({ featured_image: file })
+    };
   }
 
-  handleRichTextEditorChange = (content) => {
+  handleRichTextEditorChange(content) {
     this.setState({
       content: content
     });
@@ -94,12 +91,9 @@ export default class BlogForm extends Component {
     formData.append("portfolio_blog[content]", this.state.content);
 
     if (this.state.featured_image) {
-      formData.append(
-        "portfolio_blog[featured_image]", 
-        this.state.featured_image
-      );
+      formData.append("portfolio_blog[featured_image]", this.state.featured_image);
     }
-    
+
     return formData;
   }
 
@@ -111,8 +105,8 @@ export default class BlogForm extends Component {
       withCredentials: true
     })
       .then(response => {
-        if (this.state.featured_image) { 
-          this.featuredImageRef.current.dropzone.removeAllFiles()
+        if (this.state.featured_image) {
+          this.featuredImageRef.current.dropzone.removeAllFiles();
         }
 
         this.setState({
@@ -122,12 +116,10 @@ export default class BlogForm extends Component {
           featured_image: ""
         });
 
-        if (this.props.editMode){
-            this.props.handleUpdateFormSubmission(response.data.portfolio_blog);
-        } else{
-        this.props.handleSuccessfulFormSubmission(
-          response.data.portfolio_blog
-        );
+        if (this.props.editMode) {
+          this.props.handleUpdateFormSubmission(response.data.portfolio_blog);
+        } else {
+          this.props.handleSuccessfulFormSubmission(response.data.portfolio_blog);
         }
       })
       .catch(error => {
@@ -147,7 +139,7 @@ export default class BlogForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="blog-form-wrapper">
         <div className="two-column">
-          <input 
+          <input
             type="text"
             onChange={this.handleChange}
             name="title"
@@ -155,7 +147,7 @@ export default class BlogForm extends Component {
             value={this.state.title}
           />
 
-          <input 
+          <input
             type="text"
             onChange={this.handleChange}
             name="blog_status"
@@ -164,22 +156,18 @@ export default class BlogForm extends Component {
           />
         </div>
 
-         <div className="one-column">
+        <div className="one-column">
           <RichTextEditor
             handleRichTextEditorChange={this.handleRichTextEditorChange}
             editMode={this.props.editMode}
-            contentToEdit={
-              this.props.editMode && this.props.blog.content
-                ? this.props.blog.content
-                : null
-            }
-            />
-          </div>
+            contentToEdit={this.props.editMode && this.props.blog.content ? this.props.blog.content : null}
+          />
+        </div>
 
-          <div className="image-uploaders">
+        <div className="image-uploaders">
           {this.props.editMode && this.props.blog.featured_image_url ? (
             <div className="portfolio-manager-image-wrapper">
-              <img src={this.props.blog.featured_image_url} />
+              <img src={this.props.blog.featured_image_url} alt="Featured" />
 
               <div className="image-removal-link">
                 <a onClick={() => this.deleteImage("featured_image")}>
@@ -199,7 +187,7 @@ export default class BlogForm extends Component {
           )}
         </div>
 
-        <button className='btn'>Save</button>
+        <button className="btn">Save</button>
       </form>
     );
   }
